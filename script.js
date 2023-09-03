@@ -57,14 +57,13 @@ function getImageOfTheDay(date) {
 }
 
 const mes = (date) => {
-
     const url = `https://api.nasa.gov/planetary/apod?api_key=${apiKey}&date=${date}`;
 
     fetch(url)
     .then(response => response.json())
     .then(data => {
 
-      console.log(data)
+      console.log(data);
 
       const h2 = document.createElement('h2');
       h2.innerHTML = `Picture On ${date}`;
@@ -85,6 +84,10 @@ const mes = (date) => {
       currentImageContainer.appendChild(h4);
       currentImageContainer.appendChild(p);
     })
+
+    .catch(error => {
+        console.error('Error:', error);
+    });
 
 }
 
